@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="max-age=31536000" />
+    <title>初期画面</title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+	/* 内部CSS */
+        body	/* 背景画像 */
+	{
+            background-image: url('background0.jpg');	/* 背景画像 */
+            background-repeat: no-repeat;		/* 画像を繰り返さない */
+            background-size: cover;			/* 画像サイズ調整 */
+            background-position: center;		/* 画像を中央に配置 */
+            height: 100vh;				/* 画面全体に設定 */
+            margin: 0;					/* 余白をゼロに設定 */
+        }
+
+        #title {
+            text-align: center;			/* タイトルを中央に */
+            margin: 2rem 0;			/* 上下のマージンを追加 */
+            font-family: Arial, sans-serif;	/* フォントファミリーを指定 */
+        }
+
+        #title h1	/* タイトルテキスト */
+	{
+            font-size: 10rem;			/* フォントサイズ */
+            color: transparent;			/* 文字を透明に */
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); /* 虹色のグラデーション */
+            -webkit-background-clip: text;	/* 文字ごとに虹色 */
+            background-clip: text;		/* 文字ごとに虹色 */
+        }
+
+
+        #controller	/*ボタン配置 */
+	{
+            display: flex;			/* フレックスボックスを使用して要素をレイアウト */
+            flex-direction: column;		/* ボタンを縦に並べる */
+            align-items: center;		/* ボタンを水平方向に中央揃え */
+            position: absolute;			/* ボタンを絶対位置で配置 */
+            top: 25vh;				/* 高さの25%に配置 */
+            left: 50vw;				/* 幅の50%に配置 */
+            transform: translateX(-50%);	/* 左からの位置を50%分移動して中央に配置 */
+            gap: 5vh;				/* ボタン間のスペースを高さの5%に設定 */
+        }
+
+
+
+        #controller button	/* ボタンスタイル */
+	{
+            border: none;				/* 枠線削除 */
+            padding: 1rem;				/* ボタン内余白 */
+            cursor: pointer;				/* カーソルが指したときに変色 */
+            color: black;				/* 黒文字 */
+            background-color: #fff;			/* デフォルトのボタン背景色：白 */
+            transition: background-color 0.01s ease;	/* 背景画像の実装速度 */
+            font-weight: bold;				/* より濃いフォント */
+            font-family: Arial, sans-serif;		/* 太文字 */
+	    font-size: 18px;				/* フォントサイズ */
+        }
+
+        /* ボタンの背景色 */
+        #controller #btn-four { background-color: #FFFDD0; }
+        #controller #btn-six { background-color: #28B463; }
+        #controller #btn-eight { background-color: #00BFFF; }
+        #controller #btn-ten { background-color: #FF00FF; }
+
+        /* ホバー時の色 */
+        #controller #btn-four:hover { background-color: lightgray !important; }
+        #controller #btn-six:hover { background-color: lightgreen !important; }
+        #controller #btn-eight:hover { background-color: cyan !important; }
+        #controller #btn-ten:hover { background-color: darkviolet !important; }
+
+        /* オプション: アクティブ/フォーカス状態のスタイル */
+        #controller button:focus {
+            outline: none; /* デフォルトのフォーカスアウトラインを削除 */
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        #controller button:active {
+            transform: scale(0.95); /* クリック時に少し縮む */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div id="title">
+            <h1>GAME START</h1>
+        </div>
+
+        <div id="controller">
+            <button type="button" id="btn-four" class="btn btn-secondary" onclick="goToindex4()">ミニミニ（4×4盤面）</button>
+            <button type="button" id="btn-six" class="btn btn-secondary" onclick="goToindex6()">ミニ（6×6盤面）</button>
+            <button type="button" id="btn-eight" class="btn btn-secondary" onclick="goToindex8()">スタンダード（8×8盤面）</button>
+            <button type="button" id="btn-ten" class="btn btn-secondary" onclick="goToindex10()">グランド（10×10盤面）</button>
+	    <button type="button" id="btn-C" class="btn btn-secondary" onclick="goToindexC()">試作(CPU対戦）</button>
+        </div>
+    </div>
+
+    <script>
+        function goToindex4() {
+            window.location.href = 'index4.html';
+        }
+
+        function goToindex6() {
+            window.location.href = 'index6.html';
+        }
+
+        function goToindex8() {
+            window.location.href = 'index8.html';
+        }
+
+        function goToindex10() {
+            window.location.href = 'index10.html';
+        }
+
+        function goToindexC() {
+            window.location.href = 'indexC.html';
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+body {
+  background-image: url('background.jpg');	/* 背景画像 */
+}
+
+.container {
+  font-size: 0; 				/* ボタンの余白をなくす */
+}
+
+#title {
+  text-align: center; 				/* タイトルを真ん中に */
+  color: antiquewhite;				/* タイトルの文字色 */
+}
+
+#board {
+  margin: 10% auto;				/* 上からの配置割合、中央揃え */
+  width: 34vw;					/* 幅割合 */
+  height: 68vh;					/* 高さ割合 */
+  background-color: black;			/* 背景色 */
+  outline: 1.5rem solid black;			/* 枠線の太さと色 */
+}
+
+/* マス */
+.square {
+  width: 4.2vw;					/* 幅割合 */
+  height: 8.5vh;				/* 高さ割合 */
+  background-color: green;			/* 背景色 */
+  font-size: calc(1.8vw + 1.8vh); 		/* 動的フォントサイズ */
+  transition: background-color 0.3s;		/* マスのホバー効果 */
+}
+
+.square[data-owner="black"] {
+  color: black;					/* 黒プレイヤーの駒の色 */
+}
+
+.square[data-owner="white"] {
+  color: white;					/* 白プレイヤーの駒の色 */
+}
+
+.cant-select {
+  background-color: green !important;		/* 選択不可のマス */
+}
+
+.can-select {
+  background-color: lightgreen; 		/* 選択可能なマスを明るく */
+}
+
+#board .can-select:hover {
+  background-color: lightyellow; 		/* マスのホバー時の色 */
+}
+
+/* リスタートボタンの配置 */
+#btn-initialize {
+  position: fixed;				/* 固定配置 */
+  top: 1%;					/* 上からの割合 */
+  left: 1%;					/* 左からの割合 */
+}
+
+/* 前の盤面ボタンの配置 */
+#btn-reset {
+  position: fixed;				/* 固定配置 */
+  top: 45%;					/* 上からの割合 */
+  left: 1%;					/* 左からの割合 */
+}
+
+/* 盤面選択ボタンの配置 */
+#btn-another {
+  position: fixed;				/* 固定配置 */
+  top: 90%;					/* 上からの割合 */
+  left: 1%;					/* 左からの割合 */
+}
+
+/* BGMボタンの配置 */
+.bgm-button-container {
+  display: flex;                  		/* フレックスコンテナ */
+  justify-content: flex-end;      		/* 横並びで右端に配置 */
+  position: fixed;                		/* 固定位置 */
+  bottom: 20px;                   		/* 下から割合 */
+  right: 20px;                    		/* 右から割合 */
+  gap: 10px;                      		/* ボタン間の等間隔の隙間 */
+}
+
+/* ボタン共通 */
+#controller button {
+  background-color: #FFFDD0;			/* 背景色 */
+  border: none;					/* 枠線削除 */
+  padding: 1rem;				/* 内部余白 */
+  margin: 0.5rem;				/* 外部余白 */
+  cursor: pointer;				/* クリック可能 */
+  border-radius: 5px;				/* 角の丸み */
+  font-weight: bold;				/* 太字 */
+  font-family: Arial, sans-serif;		/* フォント指定 */
+  width: 150px;   				/* 幅割合 */
+  height: 70px;   				/* 高さ割合 */
+   font-size: 18px;				/* フォントサイズ */
+}
+
+#controller button:hover {
+  background-color: lightgray; 			/* ボタンのホバー時の色 */
+}
+
+#controller button:active {
+            transform: scale(0.95); 		/* クリック時に少し縮む */
+        }
+
+/* ボタンにはハイライトを適用しない */
+#btn-initialize,#btn-another,#btn-reset,#btn-BGM1,#btn-BGM2,#btn-BGM3,#btn-BGM4{
+  background-color: #fff; 			/* ボタンの背景色 */
+  color: black; 				/* ボタンの文字色 */
+}
+
+/* トースターメッセージ */
+.toast {
+    min-width: 600px;  				/* 表示幅 */
+    font-size: 40px;   				/* フォントサイズ */
+    font-weight: bold;  			/* 太字 */
+    color: black;  				/* テキスト表示色 */
+    padding: 10px; 				/* 内部余白 */
+    border: 1px solid #ccc; 			/* 枠線 */
+    user-select: none; 				/* テキスト選択を無効 */
+}
+
+/* タイマー配置 */
+#timer-container {
+  display: flex;				/* フレックスコンテナ */
+  justify-content: center; 			/* 横方向に中央揃え */
+  align-items: center;     			/* 縦方向に中央揃え */
+  margin-bottom: 20px;  			/* 上部との間隔 */
+  padding: 0 20px;				/* 中央に寄せる */
+  position: absolute;    			/* 絶対配置 */
+  top: 60px;             			/* 上から割合 */
+  left: 50%;             			/* 中央揃えのために左から割合 */
+  transform: translateX(-50%); 			/* 左側から50%移動させて中央に */
+}
+
+/* タイマー表示 */
+.timer {
+  font-size: 18px;				/* フォントサイズ */
+  font-weight: bold;				/* 太字 */
+  padding: 10px;				/* 内部余白 */
+  background-color: #f4f4f9;			/* 背景色 */
+  border-radius: 5px;				/* 角を丸める */
+  width: 150px;					/* 幅 */
+  text-align: center;				/* テキストを中央揃え */
+}
+
+/* プレイヤー1とプレイヤー2のタイマーテキスト */
+#player1-time, #player2-time {
+  color: green;
+}
+
+.timer p {
+  margin: 0;					/* 枠サイズ調整 */
+}
+
+/* 黒のプレイヤーのタイマー */
+#player1-timer {
+    background-color: #333333; 			/* 背景色 */
+    width: 200px;  				/* 横長割合 */
+    text-align: center;  			/* テキスト中央揃え */
+    padding: 15px;  				/* 内側の余白を広げて、横長感を強調 */
+}
+
+/* 白のプレイヤーのタイマー */
+#player2-timer {
+    background-color: #FFFFFF; 			/* 背景色 */
+    width: 200px;  				/* 横長割合 */
+    text-align: center;  			/* テキスト中央揃え */
+    padding: 15px;  				/* 内側の余白を広げて、横長感を強調 */
+}
+
+/* 黒のプレイヤーのタイマー文字色 */
+#player1-timer p {
+    color: #E0E0E0; 				/* 文字色 */
+    font-size: 18px;				/* フォントサイズ */
+    font-weight: bold;				/* 太字 */
+}
+
+/* 白のプレイヤーのタイマー文字色 */
+#player2-timer p {
+    color: #4A4A4A; 				/* 文字色 */
+    font-size: 18px;				/* フォントサイズ */
+    font-weight: bold;				/* 太字 */
+}
+
+.square.highlight {
+  background-color: yellow; 			/* クリックしたマスの背景色 */
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.8); 	/* 輝くような効果 */
+  border: 2px solid orange; 			/* 枠線の色 */
+  transition: all 0.3s ease; 			/* アニメーション */
+}
